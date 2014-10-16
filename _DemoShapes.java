@@ -63,9 +63,11 @@ public class _DemoShapes {
 
 		//•	Plane shapes and sort them by their perimeter in ascending order
 		Comparator<Shape> perimeterComparator = 
-				(Shape s1, Shape s2) -> 
-					(((PlaneShape) s1).getPerimeter() < ((PlaneShape) s2).getPerimeter()? -1 :
-					 ((PlaneShape) s1).getPerimeter() > ((PlaneShape) s2).getPerimeter() ? 1 : 0);
+				(Shape s1, Shape s2) -> Double.compare(
+						((PlaneShape) s1).getPerimeter(), ((PlaneShape) s1).getPerimeter()
+						);
+//					(((PlaneShape) s1).getPerimeter() < ((PlaneShape) s2).getPerimeter()? -1 :
+//					 ((PlaneShape) s1).getPerimeter() > ((PlaneShape) s2).getPerimeter() ? 1 : 0);
 		List<Shape> planeShapes = Arrays.asList(shapes).stream()
 				.filter(s -> s instanceof PlaneShape)
 				.sorted(perimeterComparator)
